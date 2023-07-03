@@ -8,7 +8,7 @@ const components = {
   h1: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h1
       className={cn(
-        'mt-2 scroll-m-20 text-4xl font-bold tracking-tight',
+        'mt-2 scroll-m-20 text-4xl text-accent-full font-bold tracking-tight',
         className
       )}
       {...props}
@@ -17,7 +17,7 @@ const components = {
   h2: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h2
       className={cn(
-        'mt-10 scroll-m-20 border-b pb-1 text-3xl font-semibold tracking-tight first:mt-0',
+        'mt-10 scroll-m-20 border-b border-b-white/50 pb-1 text-3xl text-accent-full font-semibold tracking-tight first:mt-0',
         className
       )}
       {...props}
@@ -26,7 +26,7 @@ const components = {
   h3: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h3
       className={cn(
-        'mt-8 scroll-m-20 text-2xl font-semibold tracking-tight',
+        'mt-8 scroll-m-20 text-2xl text-accent-light font-semibold tracking-tight',
         className
       )}
       {...props}
@@ -35,7 +35,7 @@ const components = {
   h4: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h4
       className={cn(
-        'mt-8 scroll-m-20 text-xl font-semibold tracking-tight',
+        'mt-8 scroll-m-20 text-xl text-accent-light font-semibold tracking-tight',
         className
       )}
       {...props}
@@ -44,7 +44,7 @@ const components = {
   h5: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h5
       className={cn(
-        'mt-8 scroll-m-20 text-lg font-semibold tracking-tight',
+        'mt-8 scroll-m-20 text-lg text-accent-light font-semibold tracking-tight',
         className
       )}
       {...props}
@@ -53,7 +53,7 @@ const components = {
   h6: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h6
       className={cn(
-        'mt-8 scroll-m-20 text-base font-semibold tracking-tight',
+        'mt-8 scroll-m-20 text-base text-accent-light font-semibold tracking-tight',
         className
       )}
       {...props}
@@ -61,7 +61,7 @@ const components = {
   ),
   a: ({ className, ...props }: React.HTMLAttributes<HTMLAnchorElement>) => (
     <a
-      className={cn('font-medium underline underline-offset-4', className)}
+      className={cn('text-accent-light font-medium underline underline-offset-4 hover:text-accent-full', className)}
       {...props}
     />
   ),
@@ -130,7 +130,7 @@ const components = {
   pre: ({ className, ...props }: React.HTMLAttributes<HTMLPreElement>) => (
     <pre
       className={cn(
-        'mb-4 mt-6 overflow-x-auto rounded-lg border bg-black py-4 px-2',
+        'mb-4 mt-6 overflow-x-auto rounded-lg border border-accent-light bg-black py-4 px-2',
         className
       )}
       {...props}
@@ -139,7 +139,7 @@ const components = {
   code: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
     <code
       className={cn(
-        'relative rounded border px-[0.3rem] py-[0.2rem] font-mono text-sm',
+        'relative rounded border border-accent-light px-[0.3rem] py-[0.2rem] font-mono text-sm',
         className
       )}
       {...props}
