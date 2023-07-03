@@ -1,0 +1,32 @@
+---
+title: Variable Declaration in JavaScript
+description: Understanding how to declare variables in javascript while maintaining best partices
+published: true
+publishedAt: 2023-07-02
+---
+
+Variables play a crucial role in JavaScript as in other languages as they allow us to store and manipulate data dynamically. Understanding the principles of it is fundamental for writing clean, efficient and maintainable code. In this article we will understand all the ways we can declare variables and what are the best practices, and highlight common pitfalls to avoid.
+
+## The var keyword
+The `var` keyword was the original way to declare variables in JavaScript. It has function scope, which means the variable is accessible within the function it is declared in. However, it lacks block scope, being accessible out of the scope it has been defined, leading to potential issues and unwanted behaviours. It is generally recommended to avoid using `var` nowadays.
+
+## The let keyword
+Introduced to address the shortcomings of `var` and provide better variable scoping mechanisms, variables declared with `let` has block scope, meaning they are limited to the block where they are defined. Just like `var`, `let` can be redefined, meaning that a variable declared with it, can be assigned to another value later on.
+```js
+// Example of a variable being reassigned
+let name = "Fagner"
+name = "Milly"
+```
+
+## The const keyword
+Also introduced to address the same shortcomings of `var`, `const` was introduced in the same time but with an additional characteristic: they are read-only, meaning that they can not be reassigned to another value as we can do with `let`. Be aware that it doesn't mean the value assigned to it is `immutable`, objects and arrays (for example) will keep being mutable even using the `const` keyword.
+
+> Prefer to use `let` only if the variable needs to be reassigned, otherwise use `const`.
+
+## Best Practices for Variable Declaration
+
+- Declare variables at the beginning of their respective scopes for better readability. 
+- Use descriptive variable names that convey their purpose and meaning.
+- Do not worry about variable length, the only thing that matters is if the name conveys the purpose of the variable.
+- When possible, prefer `const` over `let` to make variables immutable by default and reduce the chance of accidental reassignment.
+- Don't use `var`, please.
