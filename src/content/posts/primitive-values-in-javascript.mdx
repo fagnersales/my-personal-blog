@@ -1,0 +1,53 @@
+---
+title: Primitive Values in JavaScript
+description: Commonly used primite values in JavaScript
+published: true
+publishedAt: 2023-07-03
+---
+
+In JavaScript as in other languages, there are primitive values. These forms the foundation of the data types in a programming language, and allows the developer to work with various kinds of information. In this article we will explore some of the JavaScript's primite values, understand their characteristics and discover how they can be utilized together to achieve a code solution.
+
+## Strings
+Strings represent textual data. They are sequence of characters enclosed in single quotes (''), double quotes ("") or backticks (``). Strings can be manipulated using various built-in methods and operators. Using single or double quotes will be treated identically, but using backticks will specify as a template literal string, being possible to write variables inside the text while defining it.
+```js
+// examples of defining strings 
+const string1 = 'My primitive text'
+const string2 = "My other primitive text"
+const string3 = `My primitivte text as a template literal`
+```
+```js
+// example of template literal string
+const name = "Fagner"
+const string4 = `Hello ${name}!`
+
+console.log(string4) // => Hello Fagner!
+```
+In the example above, you can see that the template literal can be interpolated with other values, in this case, another string. In order to access a variable, you need to enclose with `${` at the beginning and `}` after the variable name.
+
+You can also use operators between with strings, for example, using the operator `+` with two strings, will return a new string concatenated with both strings.
+
+[You can read more about strings here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
+
+## Numbers
+Numbers are used to repesent numeric data, they can be integers or floating-point values. Just as Strings you have some built-in properties and opeartors behaviours using Numbers.
+
+[You can read more about numbers here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
+
+## Booleans
+Booleans represent logical values and have two possible states: `true` or `false`. They are commonly used in conditional statements and logical operators. You'll often see the usage of boolean after doing a comparision of something, for example, comparing if a `number` is greather than other will return a `boolean` value, being `true` or `false`.
+
+[You can read more about booleans here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)
+
+## Undefined
+
+Undefined is a special value in JavaScript, basically it means the lack of data, the absense of a value. For example, if you define a variable without assigning a value to it, it'll automatically be assigned as `undefined`. Some built-in methods will often return `undefined` to represent that nothing was found.
+
+[You can read more about undefined here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined)
+
+## Null
+
+Null is also a special value in Javascript, however besides the similarity with `undefined`, `null` represents the intentional absense of data. You can use that to indicate that a variable has no value or to consider something as empty.
+
+[You can read more about null here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null)
+
+Understanding the most common primite values will help you understand better how your code behaves and how to implement algorithms, make sure to use each of them as they should be.
