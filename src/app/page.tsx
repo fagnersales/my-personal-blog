@@ -34,7 +34,7 @@ export default async function Home() {
               title={post.title}
               slug={post.slugAsParams}
             />
-            <PostInfo postedAt="2023-07-02" views={0} />
+            <PostInfo postedAt={post.publishedAt} views={0} />
           </PostCard>
           ))}
         </div>
