@@ -4,10 +4,29 @@ import { allPosts } from 'contentlayer/generated'
 import { notFound } from 'next/navigation'
 import { ChevronLeft } from 'lucide-react'
 import Link from 'next/link'
+import { Metadata } from 'next'
 
 type PageProps = {
   params: {
     slug: string
+  }
+}
+
+export async function generateMetadata(props: PageProps): Promise<Metadata> {
+  const { slug } = props.params
+
+  const post = allPosts.find(post => post.slugAsParams === slug)
+
+  if (!post) return {}
+
+  return {
+    title: post.title,
+    description: post.description,
+    authors: [{
+      name: "Fagner Sales",
+      url: "https://github.com/fagnersales"
+    }],
+    publisher: "Fagner Sales"
   }
 }
 
