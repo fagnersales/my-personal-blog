@@ -1,0 +1,155 @@
+---
+title: Exploring the Concepts of Functions in JavaScript
+description: Understanding Functions in JavaScript
+published: true
+publishedAt: 2023-07-03
+---
+
+[x] Declaration
+[x] Expressions
+[x] Arrow Functions
+[] High Order Functions
+
+Functions as in other languages, are very useful being something like a "subprogram" that can be called externally. A function when declared creates its own block scope with values being passed through parameters.
+
+You'll see very often the usage of functions when you need to repeatedly run an algorithm. For example, imagine the situation where you want to always sum a number with `15`, instead of always calling the operation `1 + 15`, `2 + 15`, `3 + 15`, you can have a function that does it, having a code like this:
+
+```js
+sumWithFifteen(1)
+sumWithFifteen(2)
+sumWithFifteen(3)
+```
+
+## Declaring Functions
+The syntax of declaring a function initiates with the keyword `function`, followed with the name of the function (It can be whatever you want), then the parameters the function will received and finishing with a block scope `{}`. An example of a function with the name `sumWithFifteen` that receives one parameter would be something like this:
+
+```js
+function sumWithFifteen(number) {
+  // Function body: the code that the function executes
+}
+```
+
+> Remember that the parameter `number` can have the name you desire, the same goes for the `sumWithFifteen`, that's the name of your choice too.
+
+If you want to receive more than one paramter in your function, you'd just need to separate by commas `,`, something like this:
+
+```js
+function sumTwoNumbers(firstNumber, secondNumber) {
+  // ...
+}
+```
+
+The function body contains the code that will be executed once the fnuction is invoked. It can contain any valid JavaScript code, you can declare variables, use conditional statements, invoke or declare other functions, and the most important, you can use the keyword `return` to *return* a value once the function ends, an example using the same `sumWithFifteen`, our function body would need to have the result value of the operation `number + 15` being returned as the function ends.
+
+```js
+function sumWithFifteen(number) {
+  const result = number + 15
+
+  return result
+}
+```
+
+In order to invoke a function, after it is declared you can do it by writing the name of the function followed by paranthesis `()` containing the arguments (parameters required by the function), just like the parameters you can separate the arguments by commas.
+
+```js
+functionName(argument1, argument2, argument3)
+```
+
+> JavaScript will not do any checking if you've passed the valid amount of arguments needed!
+
+Declaring and invoking our function would look like this:
+
+```js
+function sumWithFifteen(number) {
+  const result = number + 15
+
+  return result
+}
+
+const result1 = sumWithFifteen(1)
+const result2 = sumWithFifteen(2)
+
+console.log(result1) // => 16
+console.log(result2) // => 17
+```
+
+## Function Expressions
+Functions can be assigned to variables or properties of an object. When doing something like that you'll often see the usage of anonymous functions (Functions that has no name) and also arrow functions.
+
+You can initialize a variable with a function using the following syntax:
+
+```js
+const myFunction = function(param0, param1) {
+  // Code here...
+}
+```
+
+It'll behave as a normal function and to invoking it, you'd need to use the variable name as the name of the function.
+
+It becomes very powerful when you have an object with encapsulated algoritm, it helps with the readability and organization. 
+
+```js
+const math = {
+  getRectArea: function(width, height) {
+    return width * height
+  }
+}
+
+math.getRectArea(10, 20)
+math.getRectArea(5, 5)
+```
+
+`Arrow functions` provides a more concise syntax for defining functions, it's useful when you need to write a short, one-line function. You'll often see the usage of arrow functions when writing callbacks that we will explore later on in our blog. But basically it is a function that is used as argument for other functions.
+
+```js
+const getRectArea = (width, height) => width * height
+
+const math = {
+  sumWithFifteen: (number) => number + 15,
+  sumWithTen: (number) => {
+    const result = number + 10
+    return result
+  }
+}
+```
+
+> Note that if you don't initialize a scope `{}` for the function body, the value after it will be used as the return value of the arrow function, in this case the value of `width * height`.
+
+## High Order Functions
+Understanding how High Order Functions works is fundamental for a better knowledge of JavaScript, you'll often see it in some built-in methods in the [Array](https://fagnersales.vercel.app/arrays-and-objects-in-javascript) such as `.forEach()`, `.find()`, `.map()`, `.filter()`, etc.
+Basically High Order Functions are functions that receives *other functions* as parameter, see the example below of it being used.
+
+```js
+const myNumbers = [5, 4, 2, 8]
+
+// forEach is a built-in method that will call the callback (function in the argument) for each value in the list
+// In this case the function would be called 4 times in the following order:
+// 5, 4, 2, 8
+myNumbers.forEach((item) => {
+  console.log(item)
+})
+
+// Console Output:
+// => 5
+// => 4
+// => 2
+// => 8
+```
+
+Realize that in the example above, the `forEach` is receiving an arrow function with one parameter, `item` and the function body being the `console.log(item)`. You can also use anonymous functions as the argument.
+
+```js
+const myNumbers = [5, 4, 2, 8]
+
+myNumbers.forEach(function(item) {
+  console.log(item)
+})
+
+// Console Output:
+// => 5
+// => 4
+// => 2
+// => 8
+```
+
+Understanding how to use functions will make a huge change while developing in JavaScript. Remember that every repeated code probably (and should be) enclosed in a function statement, so it becomes way easier to work with. Also try to always write your functions with names that tells you what the function does, it'll prevent you to go to the function body to understand what the function is actually doing.
