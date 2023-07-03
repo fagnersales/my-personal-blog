@@ -1,0 +1,45 @@
+---
+title: Objects and Arrays in JavaScript
+description: Complex Data Structures using JavaScript
+published: true
+publishedAt: 2023-07-03
+---
+
+Besides the primitive values as I posted earlier, we can also define complex (or simple) data structures using `Arrays` and `Objects`, let's dive into each one of them to understand how to use and when to use.
+
+## Objects
+Objects allows you to store and organize data in a collection of key-value pairs where the key is usually a string and the value can be anything, including other objects, making them ideal for representing entities or a specific type of data, a User for example. Objects are declared using curly braces `{}` and can contain `properties` and `methods` (functions that can be called within the object that holds it.) In order to access something inside an object, we can use dot notation `person.name` or bracket notation `person['name']`.
+
+```js
+// example of a object being defined
+const person = {
+  firstName: "Fagner",
+  lastName: "Sales",
+  age: 22,
+  job: "Programmer",
+}
+
+// accessing a value inside the object
+console.log(person.age) // => 22
+console.log(person['job']) // => Programmer
+```
+
+## Arrays
+Arrays are collections of indexed elements. They can store multiple values of any data type, including other arrays and objects. Arrays are created using square brackets `[]` and each value is separated with a comma `,`. Arrays have a lot of built-in methods that can be used to modify an element, access a specific one or generate other arrays based on some condition, making it very flexible to different needs.
+
+> **Arrays are zero-based:** The first element of an array is at the index 0
+> Array elements can only be accessed by the index (a nonnegative number) of the element, if the index doesn't point to an element inside the array, undefined will be returned instead
+
+```js
+// example defining an array of numbers
+const myNumbers = [8, 3, 4, 1, 14]
+
+console.log(myNumbers[0]) // => 8
+console.log(myNumbers[1]) // => 3
+console.log(myNumbers[2]) // => 4
+```
+
+## When to use each of them?
+Usually if you're doing a list of something, you'll need an `Array`, otherwise you'll go with an `Object`, so keep in mind: List of something means `Array`, defining the data for an entity (user, body of a message, etc) means `Object`.
+
+You can learn more about Objects [here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object) and more about Arrays [here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)
