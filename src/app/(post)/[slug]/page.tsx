@@ -1,4 +1,4 @@
-import "@/styles/mdx.css"
+import '@/styles/mdx.css'
 import { Mdx } from '@/components/mdx'
 import { allPosts } from 'contentlayer/generated'
 import { notFound } from 'next/navigation'
@@ -9,6 +9,14 @@ type PageProps = {
   params: {
     slug: string
   }
+}
+
+export async function generateStaticParams() {
+  const posts = allPosts.filter(post => !!post.published)
+
+  return posts.map(post => ({
+    slug: post.slugAsParams
+  }))
 }
 
 async function getPostFromParams(slug: string) {
