@@ -2,7 +2,6 @@ import { PostCard } from "@/components/post/card";
 import { PostInfo } from "@/components/post/info";
 import { PostTitle } from "@/components/post/title";
 import { allPosts } from "contentlayer/generated";
-import { compareDesc } from "date-fns"
 
 async function getAllPosts() {
   const posts = allPosts.filter(post => post.published)
@@ -10,11 +9,11 @@ async function getAllPosts() {
   if (posts.length === 0) throw new Error("No posts available")
 
   return posts.sort((a, b) => {
-    return compareDesc(new Date(a.publishedAt), new Date(b.publishedAt))
+    return b.index - a.index
   })
 }
 
-export default async function Home() { 
+export default async function Home() {
   const posts = await getAllPosts()
 
   return (
@@ -29,13 +28,13 @@ export default async function Home() {
         <div className="divide-y divide-gray-600/40">
           {posts.map((post, index) => (
             <PostCard key={index}>
-            <PostTitle
-              index={index}
-              title={post.title}
-              slug={post.slugAsParams}
-            />
-            <PostInfo postedAt={post.publishedAt} views={0} />
-          </PostCard>
+              <PostTitle
+                index={index}
+                title={post.title}
+                slug={post.slugAsParams}
+              />
+              <PostInfo postedAt={post.publishedAt} views={0} />
+            </PostCard>
           ))}
         </div>
       </div>
