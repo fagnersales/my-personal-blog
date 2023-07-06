@@ -1,0 +1,127 @@
+---
+title: Exploring the concept of asynchronous code in JavaScript
+description: Learn how to use async/await and handle errors properly
+published: true
+index: 5
+publishedAt: 2023-07-06
+---
+
+Asynchronous operations in a simple manner it is basically working with functions that needs a longer time to finish, usually because it handle other asynchronous operations such as API Calls.
+
+To start understanding and developing with asynchronous code we will begin with its syntax. There are 2 keywords that you need to keep in mind when doing it and they are `async` and `await`.
+
+## Async
+the `async` keyword is used when you want to declare a function that needs time to be finished. The function once declared with `async` will return a `Promise` implicitly
+
+```js
+async function doSomething() {
+  // ...
+}
+```
+
+By default the above function will return a `Promise` containing the value returned in the function body.
+
+> **But what exactly is a Promise?** A Promise as the name suggests is the promise of a value being returned after a uncertain time. This type of function can also fail and an unhandled error will be triggered, crashing the application if the error is not handled correctly (More on that later.)
+
+It is also possible to make async functions without the async keyword. As I told you earlier, async functions implicitly returns a `promise` but you can do the same as well without the async keword, let's see an example:
+
+```js
+function doSomething() {
+  return new Promise((resolve, reject) => {
+    // ...
+  })
+}
+```
+
+In the above example we are creating a new function and returning a **new** Promise. In this context the Promise is a global class that we can pass as argument a function that receives both `resolve` and `reject`. Both of the parameters are functions that can be called. Resolve is called with the value that the promise will return and reject when something fails, triggering an error.
+
+Let's see an example of returning a promise of a function that sums two numbers:
+
+```js
+function sumTwoNumbers(a, b) {
+  return new Promise((resolve, reject) => {
+      resolve(a + b)
+  })
+}
+
+// The same function can be declared with async like this:
+async function sumTwoNumbers(a, b) {
+  return a + b
+}
+```
+
+Now that you understand how a Promise is created, let's dive in to the next keyword that you must know to master asynchronous operations.
+
+## Await
+the `await` keyword is used to tell the code we will wait until a operation is fulfilled, using the same example of the async function `sumTwoNumbers` that is what it would look like to await it:
+
+> **Note:** the `await` keyword only works inside an async scope.
+
+```js
+const result = await sumTwoNumbers(1, 2)
+console.log(result) // => 3
+```
+
+But what would happen if we don't use the `await` keyword while calling an async function?
+
+```js
+const result = sumTwoNumbers(1, 2)
+console.log(result) // => Promise {}
+```
+
+You can still `await` fro the Promise and get the encapsulated value, in this case it would look like this:
+
+```js
+const result = sumTwoNumbers(1, 2)
+console.log(await result) // => 3
+```
+
+Now that you have learned how to use both async and await keywords, you need to know how to handle errors using `try/catch`, so I will show a brief example about it (We will have a post about error handling in the future!)
+
+# Try/Catch
+As the name suggets, the try/catch works by trying an operation that can possible throw an error (more likely to happen in async operations). Its syntax look like this:
+
+```js
+try {
+  // Code to try
+} catch (error) {
+  // Code executed if an error happen
+}
+```
+
+Let's make an async function that throws an error when receives an unwanted string as parameter, using the power of `async/await` combined with `try/catch`
+
+```js
+async function learningAsync() {
+  // declaring another function
+  async function readText(string) {
+    // comparing the received parameter
+    // with another string
+    if (string === "I hate you!") {
+      // throwing a new Error
+      throw new Error('I do not like this text!')
+    }
+
+    // returning the follow string if the string
+    // parameter does not match
+    return "I love you too!"
+  }
+
+  // Using try/catch
+  try {
+    await readText("I hate you!")
+  } catch (error) {
+    console.log("Hey, I just catched an error!")
+    console.error(error.message)
+  }
+
+}
+
+// call this function as the code begins
+learningAsync()
+```
+
+What do you think it would happen after executhing this code? [You can try it here!](https://codepen.io/fagnerdev/pen/qBQXeoe?editors=0012)
+
+## Thanks for reading
+I hope this content helped you in your journey of learning JavaScript, I'll be doing more and more until you master all of it! \<3
