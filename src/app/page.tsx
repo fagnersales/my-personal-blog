@@ -9,7 +9,7 @@ async function getAllPosts() {
   if (posts.length === 0) throw new Error('No posts available')
 
   return posts.sort((a, b) => {
-    return b.index - a.index
+    return new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
   })
 }
 
