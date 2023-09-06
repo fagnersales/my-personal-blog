@@ -93,9 +93,12 @@ const components = {
     className,
     alt,
     ...props
-  }: React.ImgHTMLAttributes<HTMLImageElement>) => (
+  }: React.ImgHTMLAttributes<HTMLImageElement> & { "data-text": string | undefined }) => (
     // eslint-disable-next-line @next/next/no-img-element
-    <img className={cn('rounded-md border', className)} alt={alt} {...props} />
+    <div className='rounded-md border place-items-center'>
+      <img className={cn('rounded-md border', className)} alt={alt} {...props} />
+      {props["data-text"] && <h4>{props["data-text"]}</h4>}
+    </div>
   ),
   hr: ({ ...props }) => <hr className='my-4 md:my-8' {...props} />,
   table: ({ className, ...props }: React.HTMLAttributes<HTMLTableElement>) => (
