@@ -24,7 +24,6 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
 
   const ogUrl = new URL(`${url}/api/og`)
   ogUrl.searchParams.set("title", post.title)
-  ogUrl.searchParams.set("mode", "light")
 
   return {
     title: post.title,
@@ -38,7 +37,7 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
       title: post.title,
       description: post.description,
       type: "article",
-      url: absoluteUrl(`/posts/post.slug`),
+      url: absoluteUrl(`/posts/${post.slug}`),
       images: [
         {
           url: ogUrl.toString(),
