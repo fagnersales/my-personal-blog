@@ -19,7 +19,7 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
 
   if (!post) return {}
 
-  const ogUrl = new URL(`http://localhost:3000/api/og`)
+  const ogUrl = new URL(`https://blog.artava.studio/api/og`)
   ogUrl.searchParams.set("title", post.title)
   ogUrl.searchParams.set("mode", "light")
 
@@ -37,7 +37,7 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
       title: post.title,
       description: post.description,
       type: "article",
-      url: `http://localhost:3000/posts/${post.slug}`,
+      url: `https://blog.artava.studio/posts/${post.slug}`,
       images: [
         {
           url: ogUrl.toString(),
