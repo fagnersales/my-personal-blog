@@ -5,6 +5,7 @@ import { notFound } from 'next/navigation'
 import { ChevronLeft } from 'lucide-react'
 import Link from 'next/link'
 import { Metadata } from 'next'
+import { absoluteUrl } from '@/lib/utils'
 
 type PageProps = {
   params: {
@@ -19,11 +20,11 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
 
   if (!post) return {}
 
-  const ogUrl = new URL(`https://blog.artava.studio/api/og`)
+  const url = absoluteUrl("/")
+
+  const ogUrl = new URL(`${url}/api/og`)
   ogUrl.searchParams.set("title", post.title)
   ogUrl.searchParams.set("mode", "light")
-
-  console.log(ogUrl);
 
   return {
     title: post.title,
@@ -37,7 +38,7 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
       title: post.title,
       description: post.description,
       type: "article",
-      url: `https://blog.artava.studio/posts/${post.slug}`,
+      url: absoluteUrl(`/posts/post.slug`),
       images: [
         {
           url: ogUrl.toString(),

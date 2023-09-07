@@ -1,5 +1,5 @@
 import { allPosts } from 'contentlayer/generated'
-import { env } from 'env.mjs'
+import { env } from '@/env.mjs'
 
 export default async function sitemap() {
   const posts = allPosts
