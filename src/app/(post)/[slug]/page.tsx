@@ -19,6 +19,12 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
 
   if (!post) return {}
 
+  const ogUrl = new URL(`http://localhost:3000/api/og`)
+  ogUrl.searchParams.set("title", post.title)
+  ogUrl.searchParams.set("mode", "light")
+
+  console.log(ogUrl);
+
   return {
     title: post.title,
     description: post.description,
@@ -26,7 +32,27 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
       name: "Fagner Sales",
       url: "https://github.com/fagnersales"
     }],
-    publisher: "Fagner Sales"
+    publisher: "Fagner Sales",
+    openGraph: {
+      title: post.title,
+      description: post.description,
+      type: "article",
+      url: `http://localhost:3000/posts/${post.slug}`,
+      images: [
+        {
+          url: ogUrl.toString(),
+          width: 1200,
+          height: 630,
+          alt: post.title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.description,
+      images: [ogUrl.toString()],
+    },
   }
 }
 
