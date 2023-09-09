@@ -20,10 +20,7 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
 
   if (!post) return {}
 
-  const url = absoluteUrl("/")
-
-  const ogUrl = new URL(`${url}/api/og`)
-  ogUrl.searchParams.set("title", post.title)
+  const ogUrl = `/og/${post.slug}.png`
 
   return {
     title: post.title,
@@ -40,7 +37,7 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
       url: absoluteUrl(`/posts/${post.slug}`),
       images: [
         {
-          url: ogUrl.toString(),
+          url: ogUrl,
           width: 1200,
           height: 630,
           alt: post.title,
@@ -51,7 +48,7 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
       card: "summary_large_image",
       title: post.title,
       description: post.description,
-      images: [ogUrl.toString()],
+      images: [ogUrl],
     },
   }
 }
