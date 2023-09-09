@@ -20,7 +20,7 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
 
   if (!post) return {}
 
-  const ogUrl = `/og/${post.slug}.png`
+  const ogUrl = absoluteUrl(`/og/${post.slug}.png`)
 
   return {
     title: post.title,
